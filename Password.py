@@ -7,12 +7,14 @@ writes the secure passwords to an output file.
 """
 
 import random
+from pathlib import Path
 
-ab = "Z:\\Desktop General\\VS Code"
+# Get the directory where this script is located
+script_dir = Path(__file__).parent
 
-input = ab + '\\input.txt'
-output = ab + '\\output.txt'
-replacements_file = ab + '\\passwordReplacement.txt'
+input = script_dir / 'input.txt'
+output = script_dir / 'output.txt'
+replacements_file = script_dir / 'passwordReplacement.txt'
 
 # Load replacements from file
 replacements = {}
