@@ -21,15 +21,19 @@ replacements = {}
 with open(replacements_file, 'r') as f:
     for line in f:
         line = line[4:].strip().replace(',', '')  # Removes commas
-        replacements[line] = line
-        print(line)
+        
+        for char in line:
+            replacements[char] = char
+            print(replacements)
 
 def replace_chars(line):
-    pass
+    for old_char, new_char in replacements.items():
+        line = line.replace(old_char, new_char)
+    return line
 
-# with open(input, 'r') as infile:
-#     with open(output, 'w') as outfile:
-#         for line in infile:
-#             processed_line = replace_chars(line)
-#             outfile.write(processed_line)
-#             print(processed_line)
+with open(input, 'r') as infile:
+    with open(output, 'w') as outfile:
+         for line in infile:
+            processed_line = replace_chars(line)
+            outfile.write(processed_line)
+            print(processed_line)
