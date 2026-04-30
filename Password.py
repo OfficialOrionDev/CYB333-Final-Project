@@ -36,27 +36,20 @@ def randomize(char):
 
                 # If the character to replace exists in the word, replace it with a random character
                 if char == c:
+                    # temporarily fills "list" with the characters to replace with
                     for i in range(4, len(line)):
                         list.append(line[i]) # Appends first item in list.
-                   
-                    print(list)
-                
+                        c = random.choice(list) # Chooses a random character from the list to replace with
+                    return c
         # char = random.choice(replacements)
             
 
-with open(input, 'r') as infile:
-    for line in infile:
-        for character in line:
-            if character in replacements:
-                randomize(character)
-                
-                
-    # with open(output, 'w') as outfile:
-        #  for line in infile:
-        #     for char in line:
-        #         if char in replacements:
-        #             print(char)
-                    # line = line.replace(char, replacements[char])
+with open(input, 'r') as infile:      
+    with open(output, 'w') as outfile:
+         for line in infile:
+            for char in line:
+                if char in replacements:
+                    print(randomize(char))
                     # outfile.write(line)
 
                 
