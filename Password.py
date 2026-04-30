@@ -17,26 +17,40 @@ input = script_dir / 'input.txt'
 output = script_dir / 'output.txt'
 replacements_file = script_dir / 'passwordReplacement.txt'
 
-# Puts letters to search for in the "replacements" list
+# Puts letters to search for in input.txt into a list
 replacements = []
 with open(replacements_file, 'r') as f:
     for line in f:
-        letters = line[0:1]
-        replacements.append(letters)
+        replacements.append(line[0:1]) # Gets the first character of each line in the file and adds it to the list
+print(replacements)
+print("\n")
 
+def randomize(char):
+    with open(replacements_file, 'r') as f:
+        list = []
+        for line in f:
+            for c in line:
+                # Line clean up to only give characters to use
+                line = line.replace(',', '')
+                line = line.replace('\n', '') 
 
-# Replaces character in the password
-def replace_chars(line):
-    for old_char, new_char in replacements.items():
-        line = line.replace(old_char, new_char)
-    return line
+                # If the character to replace exists in the word, replace it with a random character
+                if char == c:
+                    for i in range(4, len(line)):
+                        list.append(line[i]) # Appends first item in list.
+                   
+                    print(list)
+                
+        # char = random.choice(replacements)
+            
 
 with open(input, 'r') as infile:
     for line in infile:
-        # print(replacements)
-        for char in line:
-            if char in replacements:
-                print(line)
+        for character in line:
+            if character in replacements:
+                randomize(character)
+                
+                
     # with open(output, 'w') as outfile:
         #  for line in infile:
         #     for char in line:
@@ -44,4 +58,5 @@ with open(input, 'r') as infile:
         #             print(char)
                     # line = line.replace(char, replacements[char])
                     # outfile.write(line)
+
                 
