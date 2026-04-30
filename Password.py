@@ -19,6 +19,7 @@ replacements_file = script_dir / 'passwordReplacement.txt'
 
 # Puts letters to search for in input.txt into a list
 replacements = []
+filler = ["/", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "{", "}", "[", "]", "|", ":", ";","<", ">","?"] 
 with open(replacements_file, 'r') as f:
     for line in f:
         replacements.append(line[0:1]) # Gets the first character of each line in the file and adds it to the list
@@ -46,10 +47,12 @@ def randomize(char):
 
 with open(input, 'r') as infile:      
     with open(output, 'w') as outfile:
-         for line in infile:
+        for line in infile:
             for char in line:
+                # Checks each character. If it's in the list of characters to replace, randomize it. Otherwise, write it as is.
                 if char in replacements:
-                    print(randomize(char))
-                    # outfile.write(line)
-
-                
+                    char = char.replace(char, randomize(char))
+                outfile.write(char)
+                if len(line) < 16:
+                    pass
+                    # line = line + outfile.write(random.choice(filler)) # If the password is less than 16 characters, add a random character from the filler list to increase its strength.

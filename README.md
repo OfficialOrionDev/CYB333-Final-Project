@@ -13,7 +13,7 @@ According to this CISA guideline, here are the requirements that relate the clos
 
 This software takes input from the passwordReplacement.txt, and searches for the first character of each line in your passwords, such as "I" as an example. It goes through each word in input.txt, looking for this letter. Finally, it would switch the character out for "!" or "L", and places them in output.txt.
 
-This allows for scalable strengthening of passwords with a configurable character replacement to fit your I.T guidelines.
+This allows for scalable strengthening of passwords with a configurable character replacement to fit your I.T guidelines. Given the extended time that I had, this tool isn't able to extend the given passwords' length with numbers, despite my quick attempts.
 
 
 

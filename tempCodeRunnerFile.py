@@ -1,1 +1,1 @@
-print(c)
+outfile.write(line)
